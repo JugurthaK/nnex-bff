@@ -13,4 +13,23 @@ async function converter(xml) {
   return result
 }
 
-module.exports = { converter }
+function fromIntToMonth(month) {
+  const MONTHS = [
+    'Janvier',
+    'Fevrier',
+    'Mars',
+    'Avril',
+    'Mai',
+    'Juin',
+    'Juillet',
+    'Aout',
+    'Septembre',
+    'Octobre',
+    'Novembre',
+    'Decembre',
+  ]
+
+  return MONTHS[+month - 1]
+}
+
+module.exports = { converter, fromIntToMonth }

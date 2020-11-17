@@ -47,7 +47,27 @@ app.get('/article/:id', (req, res) => {
         data['pmc-articleset'].article[0].front[0]['article-meta'][0]
           .abstract[0].p[0]._
 
-      res.json({ pmid: pmid, title: title, abstract: abstract })
+      let day =
+        data['pmc-articleset'].article[0].front[0]['article-meta'][0][
+          'pub-date'
+        ][0].day[0]
+
+      let month =
+        data['pmc-articleset'].article[0].front[0]['article-meta'][0][
+          'pub-date'
+        ][0].month[0]
+
+      let year =
+        data['pmc-articleset'].article[0].front[0]['article-meta'][0][
+          'pub-date'
+        ][0].year[0]
+
+      res.json({
+        pmid: pmid,
+        title: title,
+        abstract: abstract,
+        date: `${day} ${utils.fromIntToMonth(+month)} ${year}`,
+      })
     })
     .catch((err) => res.json({ articles: null, error: err.message }))
 })
