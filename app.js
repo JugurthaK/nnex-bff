@@ -1,8 +1,11 @@
 const express = require('express')
 const axios = require('axios')
+const cors = require('cors')
 const utils = require('./utils')
 const app = express()
+
 app.use(express.json())
+app.use(cors())
 
 const PORT = process.env.PORT || 8080
 const BASE_URL = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils'
