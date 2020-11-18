@@ -16,7 +16,7 @@ app.post('/articles', (req, res) => {
     terms = req.body.terms.join('+')
     axios
       .get(
-        `${BASE_URL}/esearch.fcgi?db=pmc&term=${terms}&tool=nnex&email=jugurthak@protonmail.com&retmax=200&retmode=json`
+        `${BASE_URL}/esearch.fcgi?db=pmc&term=${terms}&tool=nnex&email=jugurthak@protonmail.com&retmax=20&retmode=json`
       )
       .then((response) => res.json(response.data))
       .catch((err) => res.json({ articles: null, error: err.message }))
